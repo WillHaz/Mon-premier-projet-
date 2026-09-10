@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercice — Tables de multiplication</title>
+  <title>Exercice — Tables de calcul</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,28 +24,41 @@
   <main class="container">
     <section class="panel exercice-panel">
       <div class="badge">Page Exercice</div>
-      <h1>Tables de <span class="accent">multiplication</span> ✖️</h1>
-      <p class="exercise-intro">Choisis une table de 1 à 10, puis entraîne-toi avec le quiz interactif.</p>
+      <h1>Tables de <span class="accent">calcul</span> 🧮</h1>
+      <p class="exercise-intro">Choisis une opération puis une table de 1 à 10. Le tableau, le quiz, le score et le chronomètre s'adaptent automatiquement.</p>
 
-      <div class="exercise-controls">
-        <label for="table-select">Choisir une table</label>
-        <select id="table-select" aria-label="Choisir une table de multiplication">
-          <option value="1">Table de 1</option>
-          <option value="2">Table de 2</option>
-          <option value="3">Table de 3</option>
-          <option value="4">Table de 4</option>
-          <option value="5">Table de 5</option>
-          <option value="6">Table de 6</option>
-          <option value="7">Table de 7</option>
-          <option value="8" selected>Table de 8</option>
-          <option value="9">Table de 9</option>
-          <option value="10">Table de 10</option>
-        </select>
+      <div class="exercise-controls controls-grid">
+        <div>
+          <label for="operation-select">Choisir une opération</label>
+          <select id="operation-select" aria-label="Choisir une opération">
+            <option value="multiplication" selected>Multiplication</option>
+            <option value="division">Division</option>
+            <option value="addition">Addition</option>
+            <option value="soustraction">Soustraction</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="table-select">Choisir une table</label>
+          <select id="table-select" aria-label="Choisir une table">
+            <option value="1">Table de 1</option>
+            <option value="2">Table de 2</option>
+            <option value="3">Table de 3</option>
+            <option value="4">Table de 4</option>
+            <option value="5">Table de 5</option>
+            <option value="6">Table de 6</option>
+            <option value="7">Table de 7</option>
+            <option value="8" selected>Table de 8</option>
+            <option value="9">Table de 9</option>
+            <option value="10">Table de 10</option>
+          </select>
+        </div>
       </div>
 
       <section class="table-card" aria-labelledby="table-title">
-        <h2 id="table-title">Table de 8</h2>
-        <div id="multiplication-table" class="multiplication-table" aria-live="polite"></div>
+        <h2 id="table-title">Table de multiplication de 8</h2>
+        <p id="table-note" class="table-note">De 1 à 10.</p>
+        <div id="operation-table" class="operation-table" aria-live="polite"></div>
       </section>
 
       <section class="quiz-card" aria-labelledby="quiz-title">
@@ -93,9 +106,11 @@
   <footer>Exercice interactif créé avec ChatGPT · Versionné avec GitHub</footer>
 
   <script>
+    const operationSelect = document.getElementById('operation-select');
     const tableSelect = document.getElementById('table-select');
     const tableTitle = document.getElementById('table-title');
-    const tableContainer = document.getElementById('multiplication-table');
+    const tableNote = document.getElementById('table-note');
+    const tableContainer = document.getElementById('operation-table');
     const quizForm = document.getElementById('quiz-form');
     const answerInput = document.getElementById('answer');
     const questionText = document.getElementById('question');
@@ -107,8 +122,17 @@
     const averageTimeValue = document.getElementById('average-time-value');
     const bestTimeValue = document.getElementById('best-time-value');
 
+    const operationLabels = {
+      multiplication: 'multiplication',
+      division: 'division',
+      addition: 'addition',
+      soustraction: 'soustraction'
+    };
+
+    let selectedOperation = operationSelect.value;
     let selectedTable = Number(tableSelect.value);
-    let currentMultiplier = 1;
+    let currentFactor = 1;
+    let currentCorrectAnswer = 0;
     let correctAnswers = 0;
     let answeredQuestions = 0;
     let currentQuestionAnswered = false;
@@ -121,13 +145,53 @@
       return `${seconds.toFixed(1).replace('.', ',')} s`;
     }
 
+    function getCalculation(factor) {
+      switch (selectedOperation) {
+        case 'division': {
+          const dividend = selectedTable * factor;
+          return {
+            expression: `${dividend} ÷ ${selectedTable}`,
+            answer: factor
+          };
+        }
+        case 'addition':
+          return {
+            expression: `${selectedTable} + ${factor}`,
+            answer: selectedTable + factor
+          };
+        case 'soustraction':
+          return {
+            expression: `${selectedTable} − ${factor}`,
+            answer: selectedTable - factor
+          };
+        case 'multiplication':
+        default:
+          return {
+            expression: `${selectedTable} × ${factor}`,
+            answer: selectedTable * factor
+          };
+      }
+    }
+
     function renderTable() {
-      tableTitle.textContent = `Table de ${selectedTable}`;
+      const label = operationLabels[selectedOperation];
+      tableTitle.textContent = `Table de ${label} de ${selectedTable}`;
+      tableNote.textContent = selectedOperation === 'division'
+        ? `Multiples de ${selectedTable} divisés par ${selectedTable}, pour obtenir des résultats entiers de 1 à 10.`
+        : selectedOperation === 'soustraction'
+          ? 'De 1 à 10. Certaines réponses peuvent être négatives.'
+          : 'De 1 à 10.';
+
       tableContainer.innerHTML = '';
 
       for (let i = 1; i <= 10; i += 1) {
+        const calculation = getCalculation(i);
         const row = document.createElement('div');
-        row.innerHTML = `<span>${selectedTable} × ${i}</span><strong>= ${selectedTable * i}</strong>`;
+        const expression = document.createElement('span');
+        const result = document.createElement('strong');
+        expression.textContent = calculation.expression;
+        result.textContent = `= ${calculation.answer}`;
+        row.append(expression, result);
         tableContainer.appendChild(row);
       }
     }
@@ -153,9 +217,11 @@
     }
 
     function newQuestion() {
-      currentMultiplier = Math.floor(Math.random() * 10) + 1;
+      currentFactor = Math.floor(Math.random() * 10) + 1;
+      const calculation = getCalculation(currentFactor);
+      currentCorrectAnswer = calculation.answer;
       currentQuestionAnswered = false;
-      questionText.textContent = `${selectedTable} × ${currentMultiplier} = ?`;
+      questionText.textContent = `${calculation.expression} = ?`;
       answerInput.value = '';
       feedback.textContent = 'Entre ta réponse puis clique sur Vérifier.';
       feedback.className = 'quiz-feedback';
@@ -180,22 +246,29 @@
     }
 
     function resetStats() {
+      clearInterval(timerInterval);
+      timerInterval = null;
       correctAnswers = 0;
       answeredQuestions = 0;
       totalResponseTime = 0;
       bestResponseTime = null;
       updateScore();
+      timerValue.textContent = '0,0 s';
       lastTimeValue.textContent = '—';
       averageTimeValue.textContent = '—';
       bestTimeValue.textContent = '—';
     }
 
-    tableSelect.addEventListener('change', () => {
+    function changeExercise() {
+      selectedOperation = operationSelect.value;
       selectedTable = Number(tableSelect.value);
       resetStats();
       renderTable();
       newQuestion();
-    });
+    }
+
+    operationSelect.addEventListener('change', changeExercise);
+    tableSelect.addEventListener('change', changeExercise);
 
     quizForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -205,9 +278,13 @@
         return;
       }
 
-      const userAnswer = Number(answerInput.value);
-      const correctAnswer = selectedTable * currentMultiplier;
+      const rawAnswer = answerInput.value.trim();
+      if (rawAnswer === '') {
+        feedback.textContent = 'Entre une réponse.';
+        return;
+      }
 
+      const userAnswer = Number(rawAnswer);
       if (!Number.isFinite(userAnswer)) {
         feedback.textContent = 'Entre un nombre valide.';
         return;
@@ -218,12 +295,12 @@
       currentQuestionAnswered = true;
       updateTimingStats(responseTime);
 
-      if (userAnswer === correctAnswer) {
+      if (userAnswer === currentCorrectAnswer) {
         correctAnswers += 1;
         feedback.textContent = `Bravo, bonne réponse en ${formatTime(responseTime)} ! 🎉`;
         feedback.className = 'quiz-feedback correct';
       } else {
-        feedback.textContent = `Pas tout à fait : la bonne réponse est ${correctAnswer}. Temps : ${formatTime(responseTime)}.`;
+        feedback.textContent = `Pas tout à fait : la bonne réponse est ${currentCorrectAnswer}. Temps : ${formatTime(responseTime)}.`;
         feedback.className = 'quiz-feedback incorrect';
       }
 

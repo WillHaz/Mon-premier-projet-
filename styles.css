@@ -142,6 +142,11 @@ li {
   color: #0f172a;
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -197,7 +202,6 @@ ul {
 
 .table-card,
 .quiz-card {
-  max-width: 760px;
   margin: 0 auto;
   padding: 28px;
   border-radius: 20px;
@@ -205,14 +209,20 @@ ul {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.table-note {
-  margin: -6px 0 20px;
-  color: #94a3b8;
-  font-size: 0.94rem;
+.table-card {
+  max-width: 700px;
 }
 
 .quiz-card {
+  max-width: 820px;
   margin-top: 28px;
+}
+
+.table-note {
+  margin: -6px 0 22px;
+  color: #94a3b8;
+  font-size: 0.94rem;
+  text-align: center;
 }
 
 .operation-table {
@@ -222,20 +232,26 @@ ul {
 }
 
 .operation-table div {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: minmax(90px, auto) minmax(60px, auto);
+  justify-content: center;
+  align-items: center;
+  column-gap: 18px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 16px;
   padding: 18px 20px;
   color: #dbeafe;
   font-size: 1.2rem;
-  text-align: left;
+}
+
+.operation-table span {
+  text-align: right;
 }
 
 .operation-table strong {
   color: white;
+  text-align: left;
 }
 
 .quiz-heading {
@@ -281,11 +297,38 @@ ul {
   font-size: 1.05rem;
 }
 
+.quiz-launch {
+  margin: 26px auto 8px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.quiz-launch p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.start-button {
+  min-width: 220px;
+}
+
 .quiz-question {
-  margin: 20px 0;
+  margin: 24px auto;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 800;
   color: white;
+  text-align: center;
+}
+
+.quiz-question.waiting {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #94a3b8;
 }
 
 .quiz-form {
@@ -299,6 +342,7 @@ ul {
   min-height: 34px;
   margin-top: 18px;
   font-weight: 700;
+  text-align: center;
 }
 
 .quiz-feedback.correct {
@@ -345,6 +389,10 @@ footer {
   .controls-grid,
   .operation-table {
     grid-template-columns: 1fr;
+  }
+
+  .operation-table div {
+    grid-template-columns: minmax(80px, auto) minmax(55px, auto);
   }
 
   .quiz-heading {

@@ -3,129 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon premier projet GitHub</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f172a, #1e293b 55%, #334155);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .card {
-      width: min(900px, 100%);
-      padding: 64px 48px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-
-    .badge {
-      display: inline-block;
-      margin-bottom: 24px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      line-height: 1.05;
-      margin-bottom: 22px;
-    }
-
-    .accent {
-      color: #93c5fd;
-    }
-
-    p {
-      max-width: 680px;
-      margin: 0 auto;
-      font-size: clamp(1rem, 2.4vw, 1.25rem);
-      line-height: 1.7;
-      color: #dbeafe;
-    }
-
-    .actions {
-      margin-top: 34px;
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: 0.92;
-    }
-
-    .primary {
-      background: white;
-      color: #0f172a;
-    }
-
-    .secondary {
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-    }
-
-    .footer {
-      margin-top: 42px;
-      font-size: 0.9rem;
-      color: #94a3b8;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        padding: 44px 24px;
-        border-radius: 22px;
-      }
-    }
-  </style>
+  <title>Mon premier vrai site</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="card">
-    <div class="badge">Version de test — branche GitHub</div>
-
-    <h1>Bonjour, ceci est ma <span class="accent">branche de test</span> 🧪</h1>
-
-    <p>
-      Cette version a été modifiée sans toucher à la branche principale ni au site public.
-      C'est exactement à cela que sert une branche dans GitHub.
-    </p>
-
-    <div class="actions">
-      <a class="button primary" href="https://github.com/WillHaz/Mon-premier-projet-" target="_blank" rel="noopener noreferrer">Voir le projet sur GitHub</a>
-      <a class="button secondary" href="#suite">Tester sans risque</a>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="index.html">Mon premier site</a>
+        <div class="nav-links">
+          <a href="index.html">Accueil</a>
+          <a href="projet.html">Projet</a>
+          <a href="a-propos.html">À propos</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="footer" id="suite">
-      Branche de travail : test-nouvelle-version
-    </div>
+  <main class="container">
+    <section class="hero">
+      <div class="badge">Étape 3 — un vrai petit site</div>
+      <h1>Je passe d'une page à un <span class="accent">site complet</span> 🚀</h1>
+      <p>
+        Ce projet contient maintenant plusieurs pages reliées entre elles et une feuille de style séparée.
+        C'est une structure beaucoup plus proche d'un vrai site web.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="projet.html">Découvrir le projet</a>
+        <a class="button" href="a-propos.html">À propos</a>
+      </div>
+    </section>
   </main>
+
+  <footer>Créé avec ChatGPT · Versionné avec GitHub · Publié avec GitHub Pages</footer>
 </body>
 </html>

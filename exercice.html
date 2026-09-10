@@ -57,6 +57,25 @@
           <div class="score" aria-live="polite">Score : <strong id="score-value">0 / 0</strong></div>
         </div>
 
+        <div class="quiz-stats" aria-live="polite">
+          <div class="stat-card">
+            <span>Chrono</span>
+            <strong id="timer-value">0,0 s</strong>
+          </div>
+          <div class="stat-card">
+            <span>Dernière réponse</span>
+            <strong id="last-time-value">—</strong>
+          </div>
+          <div class="stat-card">
+            <span>Temps moyen</span>
+            <strong id="average-time-value">—</strong>
+          </div>
+          <div class="stat-card">
+            <span>Meilleur temps</span>
+            <strong id="best-time-value">—</strong>
+          </div>
+        </div>
+
         <p id="question" class="quiz-question">8 × 1 = ?</p>
 
         <form id="quiz-form" class="quiz-form">
@@ -83,12 +102,24 @@
     const feedback = document.getElementById('feedback');
     const nextButton = document.getElementById('next-question');
     const scoreValue = document.getElementById('score-value');
+    const timerValue = document.getElementById('timer-value');
+    const lastTimeValue = document.getElementById('last-time-value');
+    const averageTimeValue = document.getElementById('average-time-value');
+    const bestTimeValue = document.getElementById('best-time-value');
 
     let selectedTable = Number(tableSelect.value);
     let currentMultiplier = 1;
     let correctAnswers = 0;
     let answeredQuestions = 0;
     let currentQuestionAnswered = false;
+    let questionStartedAt = 0;
+    let timerInterval = null;
+    let totalResponseTime = 0;
+    let bestResponseTime = null;
+
+    function formatTime(seconds) {
+      return `${seconds.toFixed(1).replace('.', ',')} s`;
+    }
 
     function renderTable() {
       tableTitle.textContent = `Table de ${selectedTable}`;
@@ -101,6 +132,26 @@
       }
     }
 
+    function stopTimer() {
+      if (!questionStartedAt) return 0;
+      const elapsed = (performance.now() - questionStartedAt) / 1000;
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerValue.textContent = formatTime(elapsed);
+      return elapsed;
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      questionStartedAt = performance.now();
+      timerValue.textContent = '0,0 s';
+
+      timerInterval = setInterval(() => {
+        const elapsed = (performance.now() - questionStartedAt) / 1000;
+        timerValue.textContent = formatTime(elapsed);
+      }, 100);
+    }
+
     function newQuestion() {
       currentMultiplier = Math.floor(Math.random() * 10) + 1;
       currentQuestionAnswered = false;
@@ -108,6 +159,7 @@
       answerInput.value = '';
       feedback.textContent = 'Entre ta réponse puis clique sur Vérifier.';
       feedback.className = 'quiz-feedback';
+      startTimer();
       answerInput.focus();
     }
 
@@ -115,11 +167,32 @@
       scoreValue.textContent = `${correctAnswers} / ${answeredQuestions}`;
     }
 
-    tableSelect.addEventListener('change', () => {
-      selectedTable = Number(tableSelect.value);
+    function updateTimingStats(lastTime) {
+      lastTimeValue.textContent = formatTime(lastTime);
+      totalResponseTime += lastTime;
+
+      if (bestResponseTime === null || lastTime < bestResponseTime) {
+        bestResponseTime = lastTime;
+      }
+
+      averageTimeValue.textContent = formatTime(totalResponseTime / answeredQuestions);
+      bestTimeValue.textContent = formatTime(bestResponseTime);
+    }
+
+    function resetStats() {
       correctAnswers = 0;
       answeredQuestions = 0;
+      totalResponseTime = 0;
+      bestResponseTime = null;
       updateScore();
+      lastTimeValue.textContent = '—';
+      averageTimeValue.textContent = '—';
+      bestTimeValue.textContent = '—';
+    }
+
+    tableSelect.addEventListener('change', () => {
+      selectedTable = Number(tableSelect.value);
+      resetStats();
       renderTable();
       newQuestion();
     });
@@ -140,15 +213,17 @@
         return;
       }
 
+      const responseTime = stopTimer();
       answeredQuestions += 1;
       currentQuestionAnswered = true;
+      updateTimingStats(responseTime);
 
       if (userAnswer === correctAnswer) {
         correctAnswers += 1;
-        feedback.textContent = 'Bravo, bonne réponse ! 🎉';
+        feedback.textContent = `Bravo, bonne réponse en ${formatTime(responseTime)} ! 🎉`;
         feedback.className = 'quiz-feedback correct';
       } else {
-        feedback.textContent = `Pas tout à fait : la bonne réponse est ${correctAnswer}.`;
+        feedback.textContent = `Pas tout à fait : la bonne réponse est ${correctAnswer}. Temps : ${formatTime(responseTime)}.`;
         feedback.className = 'quiz-feedback incorrect';
       }
 
@@ -158,6 +233,7 @@
     nextButton.addEventListener('click', newQuestion);
 
     renderTable();
+    resetStats();
     newQuestion();
   </script>
 </body>

@@ -161,11 +161,21 @@ ul {
 }
 
 .exercise-controls {
-  max-width: 420px;
+  max-width: 760px;
   margin: 0 auto 28px;
   display: grid;
-  gap: 10px;
+  gap: 16px;
   text-align: left;
+}
+
+.controls-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.controls-grid > div {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
 }
 
 .exercise-controls label {
@@ -195,17 +205,23 @@ ul {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
+.table-note {
+  margin: -6px 0 20px;
+  color: #94a3b8;
+  font-size: 0.94rem;
+}
+
 .quiz-card {
   margin-top: 28px;
 }
 
-.multiplication-table {
+.operation-table {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.multiplication-table div {
+.operation-table div {
   display: flex;
   justify-content: space-between;
   gap: 18px;
@@ -218,7 +234,7 @@ ul {
   text-align: left;
 }
 
-.multiplication-table strong {
+.operation-table strong {
   color: white;
 }
 
@@ -326,7 +342,8 @@ footer {
   }
 
   .grid,
-  .multiplication-table {
+  .controls-grid,
+  .operation-table {
     grid-template-columns: 1fr;
   }
 

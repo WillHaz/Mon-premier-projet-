@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercice — Table de 8</title>
+  <title>Exercice — Tables de multiplication</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,24 +24,141 @@
   <main class="container">
     <section class="panel exercice-panel">
       <div class="badge">Page Exercice</div>
-      <h1>Table de multiplication de <span class="accent">8</span> ✖️</h1>
-      <p class="exercise-intro">Voici la table de 8, de 1 à 10.</p>
+      <h1>Tables de <span class="accent">multiplication</span> ✖️</h1>
+      <p class="exercise-intro">Choisis une table de 1 à 10, puis entraîne-toi avec le quiz interactif.</p>
 
-      <div class="multiplication-table" aria-label="Table de multiplication de 8">
-        <div>8 × 1 <strong>= 8</strong></div>
-        <div>8 × 2 <strong>= 16</strong></div>
-        <div>8 × 3 <strong>= 24</strong></div>
-        <div>8 × 4 <strong>= 32</strong></div>
-        <div>8 × 5 <strong>= 40</strong></div>
-        <div>8 × 6 <strong>= 48</strong></div>
-        <div>8 × 7 <strong>= 56</strong></div>
-        <div>8 × 8 <strong>= 64</strong></div>
-        <div>8 × 9 <strong>= 72</strong></div>
-        <div>8 × 10 <strong>= 80</strong></div>
+      <div class="exercise-controls">
+        <label for="table-select">Choisir une table</label>
+        <select id="table-select" aria-label="Choisir une table de multiplication">
+          <option value="1">Table de 1</option>
+          <option value="2">Table de 2</option>
+          <option value="3">Table de 3</option>
+          <option value="4">Table de 4</option>
+          <option value="5">Table de 5</option>
+          <option value="6">Table de 6</option>
+          <option value="7">Table de 7</option>
+          <option value="8" selected>Table de 8</option>
+          <option value="9">Table de 9</option>
+          <option value="10">Table de 10</option>
+        </select>
       </div>
+
+      <section class="table-card" aria-labelledby="table-title">
+        <h2 id="table-title">Table de 8</h2>
+        <div id="multiplication-table" class="multiplication-table" aria-live="polite"></div>
+      </section>
+
+      <section class="quiz-card" aria-labelledby="quiz-title">
+        <div class="quiz-heading">
+          <div>
+            <span class="badge small-badge">Quiz interactif</span>
+            <h2 id="quiz-title">À toi de jouer</h2>
+          </div>
+          <div class="score" aria-live="polite">Score : <strong id="score-value">0 / 0</strong></div>
+        </div>
+
+        <p id="question" class="quiz-question">8 × 1 = ?</p>
+
+        <form id="quiz-form" class="quiz-form">
+          <label for="answer" class="sr-only">Ta réponse</label>
+          <input id="answer" name="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="Ta réponse" required>
+          <button class="button primary" type="submit">Vérifier</button>
+          <button class="button" id="next-question" type="button">Question suivante</button>
+        </form>
+
+        <p id="feedback" class="quiz-feedback" aria-live="polite">Entre ta réponse puis clique sur Vérifier.</p>
+      </section>
     </section>
   </main>
 
-  <footer>Exercice simple créé avec ChatGPT · Versionné avec GitHub</footer>
+  <footer>Exercice interactif créé avec ChatGPT · Versionné avec GitHub</footer>
+
+  <script>
+    const tableSelect = document.getElementById('table-select');
+    const tableTitle = document.getElementById('table-title');
+    const tableContainer = document.getElementById('multiplication-table');
+    const quizForm = document.getElementById('quiz-form');
+    const answerInput = document.getElementById('answer');
+    const questionText = document.getElementById('question');
+    const feedback = document.getElementById('feedback');
+    const nextButton = document.getElementById('next-question');
+    const scoreValue = document.getElementById('score-value');
+
+    let selectedTable = Number(tableSelect.value);
+    let currentMultiplier = 1;
+    let correctAnswers = 0;
+    let answeredQuestions = 0;
+    let currentQuestionAnswered = false;
+
+    function renderTable() {
+      tableTitle.textContent = `Table de ${selectedTable}`;
+      tableContainer.innerHTML = '';
+
+      for (let i = 1; i <= 10; i += 1) {
+        const row = document.createElement('div');
+        row.innerHTML = `<span>${selectedTable} × ${i}</span><strong>= ${selectedTable * i}</strong>`;
+        tableContainer.appendChild(row);
+      }
+    }
+
+    function newQuestion() {
+      currentMultiplier = Math.floor(Math.random() * 10) + 1;
+      currentQuestionAnswered = false;
+      questionText.textContent = `${selectedTable} × ${currentMultiplier} = ?`;
+      answerInput.value = '';
+      feedback.textContent = 'Entre ta réponse puis clique sur Vérifier.';
+      feedback.className = 'quiz-feedback';
+      answerInput.focus();
+    }
+
+    function updateScore() {
+      scoreValue.textContent = `${correctAnswers} / ${answeredQuestions}`;
+    }
+
+    tableSelect.addEventListener('change', () => {
+      selectedTable = Number(tableSelect.value);
+      correctAnswers = 0;
+      answeredQuestions = 0;
+      updateScore();
+      renderTable();
+      newQuestion();
+    });
+
+    quizForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (currentQuestionAnswered) {
+        feedback.textContent = 'Clique sur Question suivante pour continuer.';
+        return;
+      }
+
+      const userAnswer = Number(answerInput.value);
+      const correctAnswer = selectedTable * currentMultiplier;
+
+      if (!Number.isFinite(userAnswer)) {
+        feedback.textContent = 'Entre un nombre valide.';
+        return;
+      }
+
+      answeredQuestions += 1;
+      currentQuestionAnswered = true;
+
+      if (userAnswer === correctAnswer) {
+        correctAnswers += 1;
+        feedback.textContent = 'Bravo, bonne réponse ! 🎉';
+        feedback.className = 'quiz-feedback correct';
+      } else {
+        feedback.textContent = `Pas tout à fait : la bonne réponse est ${correctAnswer}.`;
+        feedback.className = 'quiz-feedback incorrect';
+      }
+
+      updateScore();
+    });
+
+    nextButton.addEventListener('click', newQuestion);
+
+    renderTable();
+    newQuestion();
+  </script>
 </body>
 </html>

@@ -89,16 +89,21 @@
           </div>
         </div>
 
-        <p id="question" class="quiz-question">8 × 1 = ?</p>
+        <div class="quiz-launch">
+          <button class="button primary start-button" id="start-question" type="button">Démarrer la question</button>
+          <p>Le chronomètre démarre exactement quand l'opération apparaît.</p>
+        </div>
+
+        <p id="question" class="quiz-question waiting">Clique sur Démarrer pour afficher l'opération.</p>
 
         <form id="quiz-form" class="quiz-form">
           <label for="answer" class="sr-only">Ta réponse</label>
-          <input id="answer" name="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="Ta réponse" required>
-          <button class="button primary" type="submit">Vérifier</button>
-          <button class="button" id="next-question" type="button">Question suivante</button>
+          <input id="answer" name="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="Ta réponse" required disabled>
+          <button class="button primary" id="check-answer" type="submit" disabled>Vérifier</button>
+          <button class="button" id="next-question" type="button" disabled>Question suivante</button>
         </form>
 
-        <p id="feedback" class="quiz-feedback" aria-live="polite">Entre ta réponse puis clique sur Vérifier.</p>
+        <p id="feedback" class="quiz-feedback" aria-live="polite">Clique sur Démarrer quand tu es prêt.</p>
       </section>
     </section>
   </main>
@@ -115,6 +120,8 @@
     const answerInput = document.getElementById('answer');
     const questionText = document.getElementById('question');
     const feedback = document.getElementById('feedback');
+    const startButton = document.getElementById('start-question');
+    const checkButton = document.getElementById('check-answer');
     const nextButton = document.getElementById('next-question');
     const scoreValue = document.getElementById('score-value');
     const timerValue = document.getElementById('timer-value');
@@ -131,11 +138,12 @@
 
     let selectedOperation = operationSelect.value;
     let selectedTable = Number(tableSelect.value);
-    let currentFactor = 1;
     let currentCorrectAnswer = 0;
+    let currentExpression = '';
     let correctAnswers = 0;
     let answeredQuestions = 0;
     let currentQuestionAnswered = false;
+    let questionRunning = false;
     let questionStartedAt = 0;
     let timerInterval = null;
     let totalResponseTime = 0;
@@ -201,6 +209,7 @@
       const elapsed = (performance.now() - questionStartedAt) / 1000;
       clearInterval(timerInterval);
       timerInterval = null;
+      questionStartedAt = 0;
       timerValue.textContent = formatTime(elapsed);
       return elapsed;
     }
@@ -216,15 +225,41 @@
       }, 100);
     }
 
-    function newQuestion() {
-      currentFactor = Math.floor(Math.random() * 10) + 1;
-      const calculation = getCalculation(currentFactor);
+    function prepareQuestion() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      questionStartedAt = 0;
+
+      const factor = Math.floor(Math.random() * 10) + 1;
+      const calculation = getCalculation(factor);
+      currentExpression = calculation.expression;
       currentCorrectAnswer = calculation.answer;
       currentQuestionAnswered = false;
-      questionText.textContent = `${calculation.expression} = ?`;
+      questionRunning = false;
+
+      questionText.textContent = 'Clique sur Démarrer pour afficher l\'opération.';
+      questionText.classList.add('waiting');
       answerInput.value = '';
-      feedback.textContent = 'Entre ta réponse puis clique sur Vérifier.';
+      answerInput.disabled = true;
+      checkButton.disabled = true;
+      nextButton.disabled = true;
+      startButton.disabled = false;
+      timerValue.textContent = '0,0 s';
+      feedback.textContent = 'Clique sur Démarrer quand tu es prêt.';
       feedback.className = 'quiz-feedback';
+    }
+
+    function startQuestion() {
+      if (questionRunning || currentQuestionAnswered) return;
+
+      questionRunning = true;
+      questionText.textContent = `${currentExpression} = ?`;
+      questionText.classList.remove('waiting');
+      startButton.disabled = true;
+      answerInput.disabled = false;
+      checkButton.disabled = false;
+      nextButton.disabled = true;
+      feedback.textContent = 'Entre ta réponse puis clique sur Vérifier.';
       startTimer();
       answerInput.focus();
     }
@@ -248,6 +283,7 @@
     function resetStats() {
       clearInterval(timerInterval);
       timerInterval = null;
+      questionStartedAt = 0;
       correctAnswers = 0;
       answeredQuestions = 0;
       totalResponseTime = 0;
@@ -264,17 +300,17 @@
       selectedTable = Number(tableSelect.value);
       resetStats();
       renderTable();
-      newQuestion();
+      prepareQuestion();
     }
 
     operationSelect.addEventListener('change', changeExercise);
     tableSelect.addEventListener('change', changeExercise);
+    startButton.addEventListener('click', startQuestion);
 
     quizForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      if (currentQuestionAnswered) {
-        feedback.textContent = 'Clique sur Question suivante pour continuer.';
+      if (!questionRunning || currentQuestionAnswered) {
         return;
       }
 
@@ -293,6 +329,10 @@
       const responseTime = stopTimer();
       answeredQuestions += 1;
       currentQuestionAnswered = true;
+      questionRunning = false;
+      answerInput.disabled = true;
+      checkButton.disabled = true;
+      nextButton.disabled = false;
       updateTimingStats(responseTime);
 
       if (userAnswer === currentCorrectAnswer) {
@@ -307,11 +347,11 @@
       updateScore();
     });
 
-    nextButton.addEventListener('click', newQuestion);
+    nextButton.addEventListener('click', prepareQuestion);
 
     renderTable();
     resetStats();
-    newQuestion();
+    prepareQuestion();
   </script>
 </body>
 </html>

@@ -13,16 +13,11 @@
       <div class="brandline"><span class="brandmark">✦</span><p class="eyebrow">TADAMB</p></div>
       <h1>Deux traditions.<br><span>Un seul portrait.</span></h1>
       <p class="lead">TADAMB croise votre thème occidental avec une double lecture chinoise. Même si vous ne connaissez ni l’heure ni le lieu de naissance, le portrait reste possible avec les informations disponibles.</p>
-      <div class="chips" aria-label="Composants du portrait">
-        <span>Soleil</span><span>Lune</span><span>Ascendant</span><span>Animal chinois</span><span>Élément</span><span>Animal de l’heure</span>
-      </div>
+      <div class="chips" aria-label="Composants du portrait"><span>Soleil</span><span>Lune</span><span>Ascendant</span><span>Animal chinois</span><span>Élément</span><span>Animal de l’heure</span></div>
     </header>
 
     <section class="panel form-panel" aria-labelledby="birth-title">
-      <div class="section-head">
-        <div><p class="step">01 · Votre naissance</p><h2 id="birth-title">Créer le portrait</h2></div>
-        <p class="section-copy">La date suffit pour commencer. L’heure et le lieu sont facultatifs et permettent d’enrichir le portrait.</p>
-      </div>
+      <div class="section-head"><div><p class="step">01 · Votre naissance</p><h2 id="birth-title">Créer le portrait</h2></div><p class="section-copy">La date suffit pour commencer. L’heure et le lieu sont facultatifs et permettent d’enrichir le portrait.</p></div>
       <form id="birth-form" class="birth-form">
         <label>Prénom<input id="firstName" name="firstName" type="text" placeholder="Ex. William" autocomplete="given-name" /></label>
         <label>Date de naissance<input id="birthDate" name="birthDate" type="date" required /></label>
@@ -36,49 +31,25 @@
     <section id="results" class="results hidden" aria-live="polite">
       <article class="location-card"><div><span>Niveau de précision</span><strong id="profileLevel">—</strong></div><small id="resolvedMeta">—</small></article>
 
-      <article class="panel result-card occidental">
-        <div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le portrait occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div>
-        <div class="result-grid"><div><span>Soleil · identité</span><strong id="sunSign">—</strong></div><div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div><div><span>Ascendant · présence</span><strong id="risingSign">—</strong></div></div>
-        <p id="westernText" class="portrait-text"></p>
-      </article>
+      <article class="panel result-card occidental"><div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le portrait occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div><div class="result-grid"><div><span>Soleil · identité</span><strong id="sunSign">—</strong></div><div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div><div><span>Ascendant · présence</span><strong id="risingSign">—</strong></div></div><p id="westernText" class="portrait-text"></p></article>
 
-      <article class="panel result-card chinese">
-        <div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La lecture chinoise</h2></div><span class="symbol">陰陽</span></div>
-        <div class="result-grid"><div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div><div><span>Élément & polarité</span><strong id="yearElement">—</strong></div><div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div></div>
-        <p id="chineseText" class="portrait-text"></p>
-      </article>
+      <article class="panel result-card chinese"><div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La lecture chinoise</h2></div><span class="symbol">陰陽</span></div><div class="result-grid"><div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div><div><span>Élément & polarité</span><strong id="yearElement">—</strong></div><div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div></div><p id="chineseText" class="portrait-text"></p></article>
 
-      <article class="panel result-card fusion">
-        <div class="section-head compact"><div><p class="step">04 · Signature TADAMB</p><h2>Le portrait croisé</h2></div><span class="symbol">✦</span></div>
-        <p class="fusion-intro">TADAMB utilise uniquement les couches calculables avec les informations fournies.</p>
-        <p id="fusionText" class="portrait-text large"></p>
-      </article>
+      <article class="panel result-card fusion"><div class="section-head compact"><div><p class="step">04 · Signature TADAMB</p><h2>Le portrait croisé</h2></div><span class="symbol">✦</span></div><p class="fusion-intro">TADAMB utilise uniquement les couches calculables avec les informations fournies.</p><p id="fusionText" class="portrait-text large"></p></article>
 
-      <section class="panel life-panel" aria-labelledby="life-title">
-        <div class="section-head compact"><div><p class="step">05 · Domaines de vie</p><h2 id="life-title">Comment ce profil peut s’exprimer</h2></div><span class="symbol">◎</span></div>
-        <p class="section-copy life-copy">Ces lectures décrivent des tendances symboliques, pas des prédictions. Elles s’adaptent au niveau de précision disponible.</p>
-        <div class="life-grid">
-          <article class="life-card"><span>Travail</span><p id="lifeWork"></p></article><article class="life-card"><span>Amour</span><p id="lifeLove"></p></article><article class="life-card"><span>Amitiés</span><p id="lifeFriends"></p></article><article class="life-card"><span>Communication</span><p id="lifeCommunication"></p></article><article class="life-card"><span>Argent & sécurité</span><p id="lifeMoney"></p></article><article class="life-card"><span>Créativité & projets</span><p id="lifeCreativity"></p></article><article class="life-card"><span>Famille & attachement</span><p id="lifeFamily"></p></article><article class="life-card"><span>Changement & décisions</span><p id="lifeChange"></p></article><article class="life-card"><span>Points de vigilance</span><p id="lifeWatch"></p></article>
-        </div>
-      </section>
+      <section class="panel life-panel" aria-labelledby="life-title"><div class="section-head compact"><div><p class="step">05 · Domaines de vie</p><h2 id="life-title">Comment ce profil peut s’exprimer</h2></div><span class="symbol">◎</span></div><p class="section-copy life-copy">Ces lectures décrivent des tendances symboliques, pas des prédictions. Elles s’adaptent au niveau de précision disponible.</p><div class="life-grid"><article class="life-card"><span>Travail</span><p id="lifeWork"></p></article><article class="life-card"><span>Amour</span><p id="lifeLove"></p></article><article class="life-card"><span>Amitiés</span><p id="lifeFriends"></p></article><article class="life-card"><span>Communication</span><p id="lifeCommunication"></p></article><article class="life-card"><span>Argent & sécurité</span><p id="lifeMoney"></p></article><article class="life-card"><span>Créativité & projets</span><p id="lifeCreativity"></p></article><article class="life-card"><span>Famille & attachement</span><p id="lifeFamily"></p></article><article class="life-card"><span>Changement & décisions</span><p id="lifeChange"></p></article><article class="life-card"><span>Points de vigilance</span><p id="lifeWatch"></p></article></div></section>
 
-      <section class="panel keys-panel" aria-labelledby="keys-title">
-        <div class="section-head compact"><div><p class="step">06 · Clés personnelles</p><h2 id="keys-title">Ce qui vous porte et vous fragilise</h2></div><span class="symbol">◇</span></div>
-        <p class="section-copy life-copy">Une lecture plus synthétique de vos ressources, besoins et dynamiques relationnelles.</p>
-        <div class="keys-grid">
-          <article class="key-card"><span>Forces</span><p id="keyStrengths"></p></article>
-          <article class="key-card"><span>Fragilités</span><p id="keyFragilities"></p></article>
-          <article class="key-card"><span>Besoins profonds</span><p id="keyNeeds"></p></article>
-          <article class="key-card"><span>Ce qui vous motive</span><p id="keyMotivations"></p></article>
-          <article class="key-card"><span>Ce qui vous épuise</span><p id="keyDrains"></p></article>
-          <article class="key-card"><span>Compatibilités relationnelles</span><p id="keyCompatibility"></p></article>
-        </div>
-      </section>
+      <section class="panel keys-panel" aria-labelledby="keys-title"><div class="section-head compact"><div><p class="step">06 · Clés personnelles</p><h2 id="keys-title">Ce qui vous porte et vous fragilise</h2></div><span class="symbol">◇</span></div><p class="section-copy life-copy">Une lecture plus synthétique de vos ressources, besoins et dynamiques relationnelles.</p><div class="keys-grid"><article class="key-card"><span>Forces</span><p id="keyStrengths"></p></article><article class="key-card"><span>Fragilités</span><p id="keyFragilities"></p></article><article class="key-card"><span>Besoins profonds</span><p id="keyNeeds"></p></article><article class="key-card"><span>Ce qui vous motive</span><p id="keyMotivations"></p></article><article class="key-card"><span>Ce qui vous épuise</span><p id="keyDrains"></p></article><article class="key-card"><span>Compatibilités relationnelles</span><p id="keyCompatibility"></p></article></div></section>
+
+      <section class="panel manual-panel" aria-labelledby="manual-title"><div class="section-head compact"><div><p class="step">07 · Votre mode d’emploi</p><h2 id="manual-title">Comment fonctionner avec vous</h2></div><span class="symbol">↗</span></div><div class="manual-grid"><article><span>Pour vous approcher</span><p id="manualApproach"></p></article><article><span>Pour vous convaincre</span><p id="manualConvince"></p></article><article><span>En cas de conflit</span><p id="manualConflict"></p></article><article><span>Quand ça va mal</span><p id="manualSupport"></p></article><article><span>Ce qui vous fait décrocher</span><p id="manualDisconnect"></p></article></div></section>
+
+      <section class="panel compatibility-panel" aria-labelledby="compat-title"><div class="section-head compact"><div><p class="step">08 · Compatibilité des signes</p><h2 id="compat-title">Avec quels signes le courant passe le plus facilement ?</h2></div><span class="symbol">∞</span></div><p class="section-copy life-copy">Lecture basée sur le signe solaire. La compatibilité réelle dépend aussi de la Lune, de l’Ascendant, du vécu et des valeurs.</p><div class="compat-grid"><article class="compat-card strong"><span>Affinités naturelles</span><p id="compatStrong"></p></article><article class="compat-card complementary"><span>Complémentarités</span><p id="compatComplementary"></p></article><article class="compat-card demanding"><span>Relations plus exigeantes</span><p id="compatDemanding"></p></article></div></section>
 
       <aside class="precision"><strong>Ce que nous pouvons calculer</strong><p id="precisionWarning"></p></aside>
     </section>
   </main>
   <footer>Prototype TADAMB · Lecture symbolique et culturelle, non scientifique.</footer>
   <script type="module" src="app.js"></script>
+  <script src="extras.js" defer></script>
 </body>
 </html>

@@ -23,52 +23,28 @@
         <div><p class="step">01 · Votre naissance</p><h2 id="birth-title">Créer le portrait</h2></div>
         <p class="section-copy">La date suffit pour commencer. L’heure et le lieu sont facultatifs et permettent d’enrichir le portrait.</p>
       </div>
-
       <form id="birth-form" class="birth-form">
-        <label>
-          Prénom
-          <input id="firstName" name="firstName" type="text" placeholder="Ex. William" autocomplete="given-name" />
-        </label>
-        <label>
-          Date de naissance
-          <input id="birthDate" name="birthDate" type="date" required />
-        </label>
-        <label>
-          Heure de naissance <small>(facultatif)</small>
-          <input id="birthTime" name="birthTime" type="time" />
-        </label>
-        <label>
-          Lieu de naissance <small>(facultatif)</small>
-          <input id="birthPlace" name="birthPlace" type="text" placeholder="Ex. Bourges, France" />
-        </label>
+        <label>Prénom<input id="firstName" name="firstName" type="text" placeholder="Ex. William" autocomplete="given-name" /></label>
+        <label>Date de naissance<input id="birthDate" name="birthDate" type="date" required /></label>
+        <label>Heure de naissance <small>(facultatif)</small><input id="birthTime" name="birthTime" type="time" /></label>
+        <label>Lieu de naissance <small>(facultatif)</small><input id="birthPlace" name="birthPlace" type="text" placeholder="Ex. Bourges, France" /></label>
         <button id="submitButton" type="submit">Tracer mon portrait <span>→</span></button>
       </form>
       <p id="status" class="status" aria-live="polite">Aucune donnée n’est enregistrée par cette version du site.</p>
     </section>
 
     <section id="results" class="results hidden" aria-live="polite">
-      <article class="location-card">
-        <div><span>Niveau de précision</span><strong id="profileLevel">—</strong></div>
-        <small id="resolvedMeta">—</small>
-      </article>
+      <article class="location-card"><div><span>Niveau de précision</span><strong id="profileLevel">—</strong></div><small id="resolvedMeta">—</small></article>
 
       <article class="panel result-card occidental">
         <div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le portrait occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div>
-        <div class="result-grid">
-          <div><span>Soleil · identité</span><strong id="sunSign">—</strong></div>
-          <div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div>
-          <div><span>Ascendant · présence</span><strong id="risingSign">—</strong></div>
-        </div>
+        <div class="result-grid"><div><span>Soleil · identité</span><strong id="sunSign">—</strong></div><div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div><div><span>Ascendant · présence</span><strong id="risingSign">—</strong></div></div>
         <p id="westernText" class="portrait-text"></p>
       </article>
 
       <article class="panel result-card chinese">
         <div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La lecture chinoise</h2></div><span class="symbol">陰陽</span></div>
-        <div class="result-grid">
-          <div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div>
-          <div><span>Élément & polarité</span><strong id="yearElement">—</strong></div>
-          <div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div>
-        </div>
+        <div class="result-grid"><div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div><div><span>Élément & polarité</span><strong id="yearElement">—</strong></div><div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div></div>
         <p id="chineseText" class="portrait-text"></p>
       </article>
 
@@ -82,25 +58,26 @@
         <div class="section-head compact"><div><p class="step">05 · Domaines de vie</p><h2 id="life-title">Comment ce profil peut s’exprimer</h2></div><span class="symbol">◎</span></div>
         <p class="section-copy life-copy">Ces lectures décrivent des tendances symboliques, pas des prédictions. Elles s’adaptent au niveau de précision disponible.</p>
         <div class="life-grid">
-          <article class="life-card"><span>Travail</span><p id="lifeWork"></p></article>
-          <article class="life-card"><span>Amour</span><p id="lifeLove"></p></article>
-          <article class="life-card"><span>Amitiés</span><p id="lifeFriends"></p></article>
-          <article class="life-card"><span>Communication</span><p id="lifeCommunication"></p></article>
-          <article class="life-card"><span>Argent & sécurité</span><p id="lifeMoney"></p></article>
-          <article class="life-card"><span>Créativité & projets</span><p id="lifeCreativity"></p></article>
-          <article class="life-card"><span>Famille & attachement</span><p id="lifeFamily"></p></article>
-          <article class="life-card"><span>Changement & décisions</span><p id="lifeChange"></p></article>
-          <article class="life-card"><span>Points de vigilance</span><p id="lifeWatch"></p></article>
+          <article class="life-card"><span>Travail</span><p id="lifeWork"></p></article><article class="life-card"><span>Amour</span><p id="lifeLove"></p></article><article class="life-card"><span>Amitiés</span><p id="lifeFriends"></p></article><article class="life-card"><span>Communication</span><p id="lifeCommunication"></p></article><article class="life-card"><span>Argent & sécurité</span><p id="lifeMoney"></p></article><article class="life-card"><span>Créativité & projets</span><p id="lifeCreativity"></p></article><article class="life-card"><span>Famille & attachement</span><p id="lifeFamily"></p></article><article class="life-card"><span>Changement & décisions</span><p id="lifeChange"></p></article><article class="life-card"><span>Points de vigilance</span><p id="lifeWatch"></p></article>
         </div>
       </section>
 
-      <aside class="precision">
-        <strong>Ce que nous pouvons calculer</strong>
-        <p id="precisionWarning"></p>
-      </aside>
+      <section class="panel keys-panel" aria-labelledby="keys-title">
+        <div class="section-head compact"><div><p class="step">06 · Clés personnelles</p><h2 id="keys-title">Ce qui vous porte et vous fragilise</h2></div><span class="symbol">◇</span></div>
+        <p class="section-copy life-copy">Une lecture plus synthétique de vos ressources, besoins et dynamiques relationnelles.</p>
+        <div class="keys-grid">
+          <article class="key-card"><span>Forces</span><p id="keyStrengths"></p></article>
+          <article class="key-card"><span>Fragilités</span><p id="keyFragilities"></p></article>
+          <article class="key-card"><span>Besoins profonds</span><p id="keyNeeds"></p></article>
+          <article class="key-card"><span>Ce qui vous motive</span><p id="keyMotivations"></p></article>
+          <article class="key-card"><span>Ce qui vous épuise</span><p id="keyDrains"></p></article>
+          <article class="key-card"><span>Compatibilités relationnelles</span><p id="keyCompatibility"></p></article>
+        </div>
+      </section>
+
+      <aside class="precision"><strong>Ce que nous pouvons calculer</strong><p id="precisionWarning"></p></aside>
     </section>
   </main>
-
   <footer>Prototype TADAMB · Lecture symbolique et culturelle, non scientifique.</footer>
   <script type="module" src="app.js"></script>
 </body>

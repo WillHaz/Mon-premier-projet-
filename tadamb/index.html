@@ -3,25 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="TADAMB — un portrait astrologique croisé, occidental et chinois, conçu comme un rapport personnel premium." />
+  <meta name="description" content="TADAMB — portrait astrologique croisé occidental et chinois, conçu comme un rapport personnel premium." />
   <meta name="theme-color" content="#0b0d16" />
   <title>TADAMB — Deux traditions. Un portrait singulier.</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="v4.css" />
 </head>
 <body>
-  <div class="ambient ambient-a"></div>
-  <div class="ambient ambient-b"></div>
-
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="TADAMB — accueil">
-      <span class="brand-orbit" aria-hidden="true">✦</span>
-      <span>TADAMB</span>
-    </a>
-    <nav class="site-nav" aria-label="Navigation principale">
-      <a href="#method">La méthode</a>
-      <a href="#birth-studio">Créer mon portrait</a>
-      <a href="#results" class="nav-result">Mon rapport</a>
-    </nav>
+    <a class="brand" href="#top" aria-label="TADAMB — accueil"><span class="brand-orbit">✦</span><span>TADAMB</span></a>
+    <nav class="site-nav" aria-label="Navigation principale"><a href="#method">La méthode</a><a href="#birth-studio">Créer mon portrait</a><a href="#results">Mon rapport</a></nav>
     <a class="header-cta" href="#birth-studio">Commencer</a>
   </header>
 
@@ -31,22 +23,15 @@
         <p class="kicker"><span></span> Portrait astrologique croisé</p>
         <h1>Vous êtes plus complexe<br>qu’un seul <em>signe.</em></h1>
         <p class="hero-lead">TADAMB fait dialoguer astrologie occidentale et astrologie chinoise pour produire un portrait nuancé : identité, besoins, relations, travail, réactions sous stress et dynamiques d’évolution.</p>
-        <div class="hero-actions">
-          <a href="#birth-studio" class="primary-link">Découvrir mon portrait <span>↗</span></a>
-          <a href="#method" class="text-link">Comprendre la méthode</a>
-        </div>
-        <div class="trust-row">
-          <div><strong>2</strong><span>traditions croisées</span></div>
-          <div><strong>3</strong><span>niveaux de précision</span></div>
-          <div><strong>0</strong><span>compte requis</span></div>
-        </div>
+        <div class="hero-actions"><a href="#birth-studio" class="primary-link">Découvrir mon portrait <span>↗</span></a><a href="#method" class="text-link">Comprendre la méthode</a></div>
+        <div class="trust-row"><div><strong>2</strong><span>traditions croisées</span></div><div><strong>3</strong><span>niveaux de précision</span></div><div><strong>0</strong><span>compte requis</span></div></div>
       </div>
 
       <aside id="birth-studio" class="birth-studio" aria-labelledby="birth-title">
         <div class="studio-topline"><span>Votre carte d’identité symbolique</span><span class="studio-index">01</span></div>
         <h2 id="birth-title">Tracer votre portrait</h2>
-        <p>La date suffit. L’heure et le lieu permettent d’aller beaucoup plus loin, sans jamais bloquer l’analyse s’ils sont inconnus.</p>
-        <form id="birth-form" class="birth-form">
+        <p>La date suffit. L’heure et le lieu permettent d’aller plus loin sans bloquer l’analyse s’ils sont inconnus.</p>
+        <form id="birth-form" class="birth-form" novalidate>
           <label class="field field-name"><span>Prénom</span><input id="firstName" name="firstName" type="text" placeholder="Votre prénom" autocomplete="given-name" /></label>
           <label class="field"><span>Date de naissance <b>obligatoire</b></span><input id="birthDate" name="birthDate" type="date" required /></label>
           <label class="field"><span>Heure de naissance <i>facultatif</i></span><input id="birthTime" name="birthTime" type="time" /></label>
@@ -58,46 +43,25 @@
     </section>
 
     <section id="method" class="method-section">
-      <div class="method-intro">
-        <p class="kicker"><span></span> Une lecture par couches</p>
-        <h2>Pas une addition de signes.<br><em>Une lecture des tensions et des accords.</em></h2>
-      </div>
+      <div class="method-intro"><p class="kicker"><span></span> Une lecture par couches</p><h2>Pas une addition de signes.<br><em>Une lecture des tensions et des accords.</em></h2></div>
       <div class="method-grid">
-        <article><span class="method-no">01</span><h3>Le socle occidental</h3><p>Soleil, Lune et Ascendant décrivent trois plans différents : identité, monde intérieur et manière d’entrer en relation avec le monde.</p></article>
-        <article><span class="method-no">02</span><h3>La double lecture chinoise</h3><p>Animal annuel, élément, polarité et animal de l’heure ajoutent une lecture du tempérament, de l’adaptation et des réactions instinctives.</p></article>
-        <article><span class="method-no">03</span><h3>La fusion TADAMB</h3><p>Le moteur cherche les renforts, contradictions, compensations et zones de friction pour construire un portrait plus personnel qu’une fiche astrologique standard.</p></article>
+        <article><span class="method-no">01</span><h3>Le socle occidental</h3><p>Soleil, Lune et Ascendant décrivent identité, monde intérieur et manière d’entrer en relation avec le monde.</p></article>
+        <article><span class="method-no">02</span><h3>La double lecture chinoise</h3><p>Animal annuel, élément, polarité et animal de l’heure ajoutent tempérament, adaptation et réactions instinctives.</p></article>
+        <article><span class="method-no">03</span><h3>La fusion TADAMB</h3><p>Le moteur cherche renforts, contradictions, compensations et zones de friction pour construire un portrait réellement croisé.</p></article>
       </div>
       <p class="method-note">TADAMB propose une lecture symbolique et culturelle. Il ne présente pas l’astrologie comme une science, un diagnostic psychologique ou une prédiction certaine.</p>
     </section>
 
     <section id="results" class="results hidden" aria-live="polite">
       <div class="results-hero">
-        <div class="result-title-wrap">
-          <p class="kicker"><span></span> Votre portrait TADAMB</p>
-          <h2><span id="profileDisplayName">Votre</span> signature personnelle</h2>
-          <p id="resultIntro">Un portrait construit à partir des informations réellement disponibles.</p>
-        </div>
-        <div class="precision-card location-card">
-          <span>Niveau de précision</span>
-          <strong id="profileLevel">—</strong>
-          <small id="resolvedMeta">—</small>
-        </div>
+        <div class="result-title-wrap"><p class="kicker"><span></span> Votre portrait TADAMB</p><h2><span id="profileDisplayName">Votre</span> signature personnelle</h2><p id="resultIntro">Un portrait construit à partir des informations réellement disponibles.</p></div>
+        <div class="precision-card location-card"><span>Niveau de précision</span><strong id="profileLevel">—</strong><small id="resolvedMeta">—</small></div>
       </div>
 
-      <nav class="result-nav" aria-label="Navigation du portrait">
-        <a href="#overview">Vue d’ensemble</a>
-        <a href="#western">Occident</a>
-        <a href="#china">Chine</a>
-        <a href="#fusion">Fusion</a>
-        <a href="#deep-dive">Rapport détaillé</a>
-      </nav>
+      <nav class="result-nav" aria-label="Navigation du portrait"><a href="#overview">Vue d’ensemble</a><a href="#western">Occident</a><a href="#china">Chine</a><a href="#fusion">Fusion</a><a href="#detailedReport">Rapport détaillé</a></nav>
 
       <section id="overview" class="overview-stage">
-        <div class="overview-copy">
-          <p class="section-label">Votre architecture</p>
-          <h3>Six repères.<br><em>Une seule lecture.</em></h3>
-          <p>Les cartes ci-contre ne sont pas six étiquettes. Elles sont les couches utilisées par TADAMB pour construire la synthèse qui suit.</p>
-        </div>
+        <div class="overview-copy"><p class="section-label">Votre architecture</p><h3>Six repères.<br><em>Une seule lecture.</em></h3><p>Ces repères alimentent un modèle unique. Les données absentes ne sont jamais inventées.</p></div>
         <div class="signature-grid result-grid">
           <div class="signature-card"><span>Soleil</span><strong id="sunSign">—</strong><small>Identité, volonté, direction</small></div>
           <div class="signature-card"><span>Lune</span><strong id="moonSign">—</strong><small>Besoin émotionnel, intimité</small></div>
@@ -109,112 +73,43 @@
       </section>
 
       <div class="dual-reading">
-        <article id="western" class="reading-panel occidental">
-          <div class="reading-heading"><div><span class="section-label">Lecture occidentale</span><h3>Ce que vous montrez.<br>Ce que vous ressentez.</h3></div><span class="reading-glyph">☉ ☽ ↑</span></div>
-          <p id="westernText" class="portrait-text"></p>
-          <div class="reading-foot"><span>Soleil</span><span>Lune</span><span>Ascendant</span></div>
-        </article>
-
-        <article id="china" class="reading-panel chinese">
-          <div class="reading-heading"><div><span class="section-label">Lecture chinoise</span><h3>Votre manière d’agir,<br>de vous adapter, de réagir.</h3></div><span class="reading-glyph">陰陽</span></div>
-          <p id="chineseText" class="portrait-text"></p>
-          <div class="chinese-detail-grid">
-            <article class="micro-card"><span>Tempérament</span><p id="chineseTemperament"></p></article>
-            <article class="micro-card"><span>Forces</span><p id="chineseStrengths"></p></article>
-            <article class="micro-card"><span>Défis</span><p id="chineseChallenges"></p></article>
-            <article class="micro-card"><span>Amour & relations</span><p id="chineseLove"></p></article>
-            <article class="micro-card"><span>Travail & projets</span><p id="chineseWork"></p></article>
-            <article class="micro-card"><span>Influence de l’élément</span><p id="chineseElementText"></p></article>
-          </div>
-        </article>
+        <article id="western" class="reading-panel occidental"><div class="reading-heading"><div><span class="section-label">Lecture occidentale</span><h3>Ce que vous montrez.<br>Ce que vous ressentez.</h3></div><span class="reading-glyph">☉ ☽ ↑</span></div><p id="westernText" class="portrait-text"></p><div class="reading-foot"><span>Soleil</span><span>Lune</span><span>Ascendant</span></div></article>
+        <article id="china" class="reading-panel chinese"><div class="reading-heading"><div><span class="section-label">Lecture chinoise</span><h3>Votre manière d’agir,<br>de vous adapter, de réagir.</h3></div><span class="reading-glyph">陰陽</span></div><p id="chineseText" class="portrait-text"></p><div class="chinese-detail-grid">
+          <article class="micro-card"><span>Tempérament</span><p id="chineseTemperament"></p></article><article class="micro-card"><span>Forces</span><p id="chineseStrengths"></p></article><article class="micro-card"><span>Défis</span><p id="chineseChallenges"></p></article><article class="micro-card"><span>Amour & relations</span><p id="chineseLove"></p></article><article class="micro-card"><span>Travail & projets</span><p id="chineseWork"></p></article><article class="micro-card"><span>Influence de l’élément</span><p id="chineseElementText"></p></article>
+        </div></article>
       </div>
 
-      <article id="fusion" class="fusion result-card">
-        <div class="fusion-mark">✦</div>
-        <div class="fusion-body">
-          <span class="section-label">La signature TADAMB</span>
-          <h3>Quand vos deux astrologies<br><em>se répondent.</em></h3>
-          <p class="fusion-intro">Ici, TADAMB cesse d’additionner des traits et cherche ce qui se renforce, se compense ou se contredit.</p>
-          <p id="fusionText" class="portrait-text large"></p>
-        </div>
-      </article>
+      <article id="fusion" class="fusion result-card"><div class="fusion-mark">✦</div><div class="fusion-body"><span class="section-label">La signature TADAMB</span><h3>Quand vos deux astrologies<br><em>se répondent.</em></h3><p class="fusion-intro">Ici, TADAMB cherche ce qui se renforce, se compense ou se contredit.</p><p id="fusionText" class="portrait-text large"></p><div id="combinationAnalysis" class="combination-analysis" hidden></div></div></article>
 
-      <div id="deep-dive" class="deep-dive-marker">
-        <div><span class="section-label">Approfondir</span><h3>Votre rapport complet</h3></div>
-        <p>Les sections suivantes développent votre profil dans la vie réelle. Le rapport éditorial détaillé apparaît en premier, puis les grilles pratiques.</p>
-      </div>
+      <section id="detailedReport" class="report-panel">
+        <div class="report-head"><div><span class="section-label">Rapport TADAMB</span><h3>Votre portrait fusionné,<br><em>en profondeur.</em></h3></div><button id="exportPdfBtn" class="pdf-export-btn" type="button" disabled>Exporter en PDF</button></div>
+        <nav id="reportTabs" class="report-tabs" aria-label="Onglets du rapport"></nav>
+        <div id="reportContent" class="report-content"></div>
+      </section>
 
-      <details class="deep-section life-panel" open>
-        <summary><div><span class="section-label">Domaines de vie</span><h3 id="life-title">Comment ce profil peut s’exprimer</h3></div><span class="summary-plus">+</span></summary>
-        <div class="deep-inner">
-          <p class="section-copy life-copy">Travail, relations, créativité et sécurité : des tendances symboliques traduites en situations concrètes.</p>
-          <div class="life-grid">
-            <article class="life-card"><span>Travail</span><p id="lifeWork"></p></article>
-            <article class="life-card"><span>Amour</span><p id="lifeLove"></p></article>
-            <article class="life-card"><span>Amitiés</span><p id="lifeFriends"></p></article>
-            <article class="life-card"><span>Communication</span><p id="lifeCommunication"></p></article>
-            <article class="life-card"><span>Argent & sécurité</span><p id="lifeMoney"></p></article>
-            <article class="life-card"><span>Créativité & projets</span><p id="lifeCreativity"></p></article>
-            <article class="life-card"><span>Famille & attachement</span><p id="lifeFamily"></p></article>
-            <article class="life-card"><span>Changement & décisions</span><p id="lifeChange"></p></article>
-            <article class="life-card"><span>Points de vigilance</span><p id="lifeWatch"></p></article>
-          </div>
-        </div>
-      </details>
+      <div class="deep-dive-marker"><div><span class="section-label">Approfondir</span><h3>Les grilles pratiques</h3></div><p>Des lectures rapides pour traduire le portrait dans les situations concrètes.</p></div>
 
-      <details class="deep-section keys-panel">
-        <summary><div><span class="section-label">Clés personnelles</span><h3 id="keys-title">Ce qui vous porte et vous fragilise</h3></div><span class="summary-plus">+</span></summary>
-        <div class="deep-inner"><div class="keys-grid">
-          <article class="key-card"><span>Forces</span><p id="keyStrengths"></p></article>
-          <article class="key-card"><span>Fragilités</span><p id="keyFragilities"></p></article>
-          <article class="key-card"><span>Besoins profonds</span><p id="keyNeeds"></p></article>
-          <article class="key-card"><span>Ce qui vous motive</span><p id="keyMotivations"></p></article>
-          <article class="key-card"><span>Ce qui vous épuise</span><p id="keyDrains"></p></article>
-          <article class="key-card"><span>Compatibilités relationnelles</span><p id="keyCompatibility"></p></article>
-        </div></div>
-      </details>
+      <details class="deep-section life-panel" open><summary><div><span class="section-label">Domaines de vie</span><h3>Comment ce profil peut s’exprimer</h3></div><span class="summary-plus">+</span></summary><div class="deep-inner"><div class="life-grid">
+        <article class="life-card"><span>Travail</span><p id="lifeWork"></p></article><article class="life-card"><span>Amour</span><p id="lifeLove"></p></article><article class="life-card"><span>Amitiés</span><p id="lifeFriends"></p></article><article class="life-card"><span>Communication</span><p id="lifeCommunication"></p></article><article class="life-card"><span>Argent & sécurité</span><p id="lifeMoney"></p></article><article class="life-card"><span>Créativité & projets</span><p id="lifeCreativity"></p></article><article class="life-card"><span>Famille & attachement</span><p id="lifeFamily"></p></article><article class="life-card"><span>Changement & décisions</span><p id="lifeChange"></p></article><article class="life-card"><span>Points de vigilance</span><p id="lifeWatch"></p></article>
+      </div></div></details>
 
-      <details class="deep-section manual-panel">
-        <summary><div><span class="section-label">Votre mode d’emploi</span><h3 id="manual-title">Comment fonctionner avec vous</h3></div><span class="summary-plus">+</span></summary>
-        <div class="deep-inner"><div class="manual-grid">
-          <article><span>Pour vous approcher</span><p id="manualApproach"></p></article>
-          <article><span>Pour vous convaincre</span><p id="manualConvince"></p></article>
-          <article><span>En cas de conflit</span><p id="manualConflict"></p></article>
-          <article><span>Quand ça va mal</span><p id="manualSupport"></p></article>
-          <article><span>Ce qui vous fait décrocher</span><p id="manualDisconnect"></p></article>
-        </div></div>
-      </details>
+      <details class="deep-section keys-panel"><summary><div><span class="section-label">Clés personnelles</span><h3>Ce qui vous porte et vous fragilise</h3></div><span class="summary-plus">+</span></summary><div class="deep-inner"><div class="keys-grid">
+        <article class="key-card"><span>Forces</span><p id="keyStrengths"></p></article><article class="key-card"><span>Fragilités</span><p id="keyFragilities"></p></article><article class="key-card"><span>Besoins profonds</span><p id="keyNeeds"></p></article><article class="key-card"><span>Ce qui vous motive</span><p id="keyMotivations"></p></article><article class="key-card"><span>Ce qui vous épuise</span><p id="keyDrains"></p></article><article class="key-card"><span>Compatibilités relationnelles</span><p id="keyCompatibility"></p></article>
+      </div></div></details>
 
-      <details class="deep-section compatibility-panel">
-        <summary><div><span class="section-label">Compatibilité des signes</span><h3 id="compat-title">Les relations qui coulent… et celles qui travaillent</h3></div><span class="summary-plus">+</span></summary>
-        <div class="deep-inner">
-          <p class="section-copy life-copy">La compatibilité solaire est une première grille, jamais un verdict. La Lune, l’Ascendant, le vécu et les valeurs restent déterminants.</p>
-          <div class="compat-grid">
-            <article class="compat-card strong"><span>Affinités naturelles</span><p id="compatStrong"></p></article>
-            <article class="compat-card complementary"><span>Complémentarités</span><p id="compatComplementary"></p></article>
-            <article class="compat-card demanding"><span>Relations plus exigeantes</span><p id="compatDemanding"></p></article>
-          </div>
-        </div>
-      </details>
+      <details class="deep-section manual-panel"><summary><div><span class="section-label">Votre mode d’emploi</span><h3>Comment fonctionner avec vous</h3></div><span class="summary-plus">+</span></summary><div class="deep-inner"><div class="manual-grid">
+        <article><span>Pour vous approcher</span><p id="manualApproach"></p></article><article><span>Pour vous convaincre</span><p id="manualConvince"></p></article><article><span>En cas de conflit</span><p id="manualConflict"></p></article><article><span>Quand ça va mal</span><p id="manualSupport"></p></article><article><span>Ce qui vous fait décrocher</span><p id="manualDisconnect"></p></article>
+      </div></div></details>
+
+      <details class="deep-section compatibility-panel"><summary><div><span class="section-label">Compatibilité des signes</span><h3>Les relations qui coulent… et celles qui travaillent</h3></div><span class="summary-plus">+</span></summary><div class="deep-inner"><div class="compat-grid">
+        <article class="compat-card strong"><span>Affinités naturelles</span><p id="compatStrong"></p></article><article class="compat-card complementary"><span>Complémentarités</span><p id="compatComplementary"></p></article><article class="compat-card demanding"><span>Relations plus exigeantes</span><p id="compatDemanding"></p></article>
+      </div></div></details>
 
       <aside class="precision"><strong>Transparence de calcul</strong><p id="precisionWarning"></p></aside>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div><span class="brand-orbit">✦</span><strong>TADAMB</strong></div>
-    <p>Deux traditions. Un portrait singulier.</p>
-    <small>Lecture symbolique et culturelle — aucune donnée personnelle enregistrée par cette version.</small>
-  </footer>
-
-  <script type="module" src="app.js"></script>
-  <script src="extras.js" defer></script>
-  <script src="chinese-fix.js" defer></script>
-  <script src="mutation-guard.js" defer></script>
-  <script src="report.js" defer></script>
-  <script src="report-editorial.js" defer></script>
-  <script src="personalization.js" defer></script>
-  <script src="export-pdf.js" defer></script>
-  <script src="v3-interactions.js" defer></script>
+  <footer class="site-footer"><div><span class="brand-orbit">✦</span><strong>TADAMB</strong></div><p>Deux traditions. Un portrait singulier.</p><small>Lecture symbolique et culturelle — aucune donnée personnelle enregistrée par cette version.</small></footer>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="TADAMB — portrait astrologique occidental, chinois et croisé." />
+  <title>TADAMB — Portrait astrologique croisé</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">TADAMB</p>
+      <h1>Votre portrait, entre deux astrologies.</h1>
+      <p class="lead">Renseignez votre date, heure et lieu de naissance pour construire un portrait occidental, chinois et une lecture croisée des deux.</p>
+    </header>
+
+    <section class="panel form-panel" aria-labelledby="birth-title">
+      <div>
+        <p class="step">01 · Naissance</p>
+        <h2 id="birth-title">Les informations de départ</h2>
+      </div>
+
+      <form id="birth-form" class="birth-form">
+        <label>
+          Prénom
+          <input id="firstName" name="firstName" type="text" placeholder="Ex. William" autocomplete="given-name" />
+        </label>
+        <label>
+          Date de naissance
+          <input id="birthDate" name="birthDate" type="date" required />
+        </label>
+        <label>
+          Heure de naissance
+          <input id="birthTime" name="birthTime" type="time" required />
+        </label>
+        <label class="wide">
+          Lieu de naissance
+          <input id="birthPlace" name="birthPlace" type="text" placeholder="Ex. Bourges, France" required />
+        </label>
+        <button type="submit">Tracer mon portrait</button>
+      </form>
+
+      <p class="note">V1 : le signe solaire occidental et la double lecture chinoise sont calculés dans le navigateur. Le calcul précis de la Lune, de l’Ascendant et des maisons sera relié à Swiss Ephemeris dans l’étape suivante.</p>
+    </section>
+
+    <section id="results" class="results hidden" aria-live="polite">
+      <article class="panel result-card occidental">
+        <p class="step">02 · Occident</p>
+        <h2>Astrologie occidentale</h2>
+        <div class="result-grid">
+          <div><span>Soleil</span><strong id="sunSign">—</strong></div>
+          <div><span>Lune</span><strong id="moonSign">À calculer</strong></div>
+          <div><span>Ascendant</span><strong id="risingSign">À calculer</strong></div>
+        </div>
+        <p id="westernText" class="portrait-text"></p>
+      </article>
+
+      <article class="panel result-card chinese">
+        <p class="step">03 · Chine</p>
+        <h2>Double astrologie chinoise</h2>
+        <div class="result-grid">
+          <div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div>
+          <div><span>Élément</span><strong id="yearElement">—</strong></div>
+          <div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div>
+        </div>
+        <p id="chineseText" class="portrait-text"></p>
+      </article>
+
+      <article class="panel result-card fusion">
+        <p class="step">04 · Fusion TADAMB</p>
+        <h2>Le portrait croisé</h2>
+        <p id="fusionText" class="portrait-text large"></p>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <header class="hero">
       <div class="brandline"><span class="brandmark">✦</span><p class="eyebrow">TADAMB</p></div>
       <h1>Deux traditions.<br><span>Un seul portrait.</span></h1>
-      <p class="lead">TADAMB croise votre thème occidental avec une double lecture chinoise pour faire ressortir les convergences, les tensions et les nuances de votre personnalité.</p>
+      <p class="lead">TADAMB croise votre thème occidental avec une double lecture chinoise. Même si vous ne connaissez ni l’heure ni le lieu de naissance, le portrait reste possible avec les informations disponibles.</p>
       <div class="chips" aria-label="Composants du portrait">
         <span>Soleil</span><span>Lune</span><span>Ascendant</span><span>Animal chinois</span><span>Élément</span><span>Animal de l’heure</span>
       </div>
@@ -21,7 +21,7 @@
     <section class="panel form-panel" aria-labelledby="birth-title">
       <div class="section-head">
         <div><p class="step">01 · Votre naissance</p><h2 id="birth-title">Créer le portrait</h2></div>
-        <p class="section-copy">L’heure et le lieu servent notamment à calculer l’Ascendant et à replacer la naissance dans le bon fuseau horaire.</p>
+        <p class="section-copy">La date suffit pour commencer. L’heure et le lieu sont facultatifs et permettent d’enrichir le portrait.</p>
       </div>
 
       <form id="birth-form" class="birth-form">
@@ -34,12 +34,12 @@
           <input id="birthDate" name="birthDate" type="date" required />
         </label>
         <label>
-          Heure de naissance
-          <input id="birthTime" name="birthTime" type="time" required />
+          Heure de naissance <small>(facultatif)</small>
+          <input id="birthTime" name="birthTime" type="time" />
         </label>
         <label>
-          Lieu de naissance
-          <input id="birthPlace" name="birthPlace" type="text" placeholder="Ex. Bourges, France" required />
+          Lieu de naissance <small>(facultatif)</small>
+          <input id="birthPlace" name="birthPlace" type="text" placeholder="Ex. Bourges, France" />
         </label>
         <button id="submitButton" type="submit">Tracer mon portrait <span>→</span></button>
       </form>
@@ -48,12 +48,12 @@
 
     <section id="results" class="results hidden" aria-live="polite">
       <article class="location-card">
-        <div><span>Lieu interprété</span><strong id="resolvedPlace">—</strong></div>
+        <div><span>Niveau de précision</span><strong id="profileLevel">—</strong></div>
         <small id="resolvedMeta">—</small>
       </article>
 
       <article class="panel result-card occidental">
-        <div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le trio occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div>
+        <div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le portrait occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div>
         <div class="result-grid">
           <div><span>Soleil · identité</span><strong id="sunSign">—</strong></div>
           <div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div>
@@ -63,7 +63,7 @@
       </article>
 
       <article class="panel result-card chinese">
-        <div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La double lecture chinoise</h2></div><span class="symbol">陰陽</span></div>
+        <div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La lecture chinoise</h2></div><span class="symbol">陰陽</span></div>
         <div class="result-grid">
           <div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div>
           <div><span>Élément & polarité</span><strong id="yearElement">—</strong></div>
@@ -74,12 +74,12 @@
 
       <article class="panel result-card fusion">
         <div class="section-head compact"><div><p class="step">04 · Signature TADAMB</p><h2>Le portrait croisé</h2></div><span class="symbol">✦</span></div>
-        <p class="fusion-intro">Ici, on ne juxtapose pas deux horoscopes. On cherche ce qui se renforce, ce qui se compense et ce qui crée une tension utile dans votre fonctionnement.</p>
+        <p class="fusion-intro">TADAMB utilise uniquement les couches calculables avec les informations fournies.</p>
         <p id="fusionText" class="portrait-text large"></p>
       </article>
 
       <aside class="precision">
-        <strong>Précision du prototype</strong>
+        <strong>Ce que nous pouvons calculer</strong>
         <p id="precisionWarning"></p>
       </aside>
     </section>

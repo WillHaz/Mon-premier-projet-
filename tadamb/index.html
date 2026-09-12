@@ -10,15 +10,18 @@
 <body>
   <main class="shell">
     <header class="hero">
-      <p class="eyebrow">TADAMB</p>
-      <h1>Votre portrait, entre deux astrologies.</h1>
-      <p class="lead">Renseignez votre date, heure et lieu de naissance pour construire un portrait occidental, chinois et une lecture croisée des deux.</p>
+      <div class="brandline"><span class="brandmark">✦</span><p class="eyebrow">TADAMB</p></div>
+      <h1>Deux traditions.<br><span>Un seul portrait.</span></h1>
+      <p class="lead">TADAMB croise votre thème occidental avec une double lecture chinoise pour faire ressortir les convergences, les tensions et les nuances de votre personnalité.</p>
+      <div class="chips" aria-label="Composants du portrait">
+        <span>Soleil</span><span>Lune</span><span>Ascendant</span><span>Animal chinois</span><span>Élément</span><span>Animal de l’heure</span>
+      </div>
     </header>
 
     <section class="panel form-panel" aria-labelledby="birth-title">
-      <div>
-        <p class="step">01 · Naissance</p>
-        <h2 id="birth-title">Les informations de départ</h2>
+      <div class="section-head">
+        <div><p class="step">01 · Votre naissance</p><h2 id="birth-title">Créer le portrait</h2></div>
+        <p class="section-copy">L’heure et le lieu servent notamment à calculer l’Ascendant et à replacer la naissance dans le bon fuseau horaire.</p>
       </div>
 
       <form id="birth-form" class="birth-form">
@@ -34,47 +37,55 @@
           Heure de naissance
           <input id="birthTime" name="birthTime" type="time" required />
         </label>
-        <label class="wide">
+        <label>
           Lieu de naissance
           <input id="birthPlace" name="birthPlace" type="text" placeholder="Ex. Bourges, France" required />
         </label>
-        <button type="submit">Tracer mon portrait</button>
+        <button id="submitButton" type="submit">Tracer mon portrait <span>→</span></button>
       </form>
-
-      <p class="note">V1 : le signe solaire occidental et la double lecture chinoise sont calculés dans le navigateur. Le calcul précis de la Lune, de l’Ascendant et des maisons sera relié à Swiss Ephemeris dans l’étape suivante.</p>
+      <p id="status" class="status" aria-live="polite">Aucune donnée n’est enregistrée par cette version du site.</p>
     </section>
 
     <section id="results" class="results hidden" aria-live="polite">
+      <article class="location-card">
+        <div><span>Lieu interprété</span><strong id="resolvedPlace">—</strong></div>
+        <small id="resolvedMeta">—</small>
+      </article>
+
       <article class="panel result-card occidental">
-        <p class="step">02 · Occident</p>
-        <h2>Astrologie occidentale</h2>
+        <div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le trio occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div>
         <div class="result-grid">
-          <div><span>Soleil</span><strong id="sunSign">—</strong></div>
-          <div><span>Lune</span><strong id="moonSign">À calculer</strong></div>
-          <div><span>Ascendant</span><strong id="risingSign">À calculer</strong></div>
+          <div><span>Soleil · identité</span><strong id="sunSign">—</strong></div>
+          <div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div>
+          <div><span>Ascendant · présence</span><strong id="risingSign">—</strong></div>
         </div>
         <p id="westernText" class="portrait-text"></p>
       </article>
 
       <article class="panel result-card chinese">
-        <p class="step">03 · Chine</p>
-        <h2>Double astrologie chinoise</h2>
+        <div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La double lecture chinoise</h2></div><span class="symbol">陰陽</span></div>
         <div class="result-grid">
           <div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div>
-          <div><span>Élément</span><strong id="yearElement">—</strong></div>
+          <div><span>Élément & polarité</span><strong id="yearElement">—</strong></div>
           <div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div>
         </div>
         <p id="chineseText" class="portrait-text"></p>
       </article>
 
       <article class="panel result-card fusion">
-        <p class="step">04 · Fusion TADAMB</p>
-        <h2>Le portrait croisé</h2>
+        <div class="section-head compact"><div><p class="step">04 · Signature TADAMB</p><h2>Le portrait croisé</h2></div><span class="symbol">✦</span></div>
+        <p class="fusion-intro">Ici, on ne juxtapose pas deux horoscopes. On cherche ce qui se renforce, ce qui se compense et ce qui crée une tension utile dans votre fonctionnement.</p>
         <p id="fusionText" class="portrait-text large"></p>
       </article>
+
+      <aside class="precision">
+        <strong>Précision du prototype</strong>
+        <p id="precisionWarning"></p>
+      </aside>
     </section>
   </main>
 
+  <footer>Prototype TADAMB · Lecture symbolique et culturelle, non scientifique.</footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>

@@ -33,7 +33,19 @@
 
       <article class="panel result-card occidental"><div class="section-head compact"><div><p class="step">02 · Occident</p><h2>Le portrait occidental</h2></div><span class="symbol">☉ ☽ ↑</span></div><div class="result-grid"><div><span>Soleil · identité</span><strong id="sunSign">—</strong></div><div><span>Lune · monde intérieur</span><strong id="moonSign">—</strong></div><div><span>Ascendant · présence</span><strong id="risingSign">—</strong></div></div><p id="westernText" class="portrait-text"></p></article>
 
-      <article class="panel result-card chinese"><div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La lecture chinoise</h2></div><span class="symbol">陰陽</span></div><div class="result-grid"><div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div><div><span>Élément & polarité</span><strong id="yearElement">—</strong></div><div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div></div><p id="chineseText" class="portrait-text"></p></article>
+      <article class="panel result-card chinese">
+        <div class="section-head compact"><div><p class="step">03 · Chine</p><h2>La lecture chinoise</h2></div><span class="symbol">陰陽</span></div>
+        <div class="result-grid"><div><span>Animal de l’année</span><strong id="yearAnimal">—</strong></div><div><span>Élément & polarité</span><strong id="yearElement">—</strong></div><div><span>Animal de l’heure</span><strong id="hourAnimal">—</strong></div></div>
+        <p id="chineseText" class="portrait-text"></p>
+        <div class="life-grid chinese-detail-grid">
+          <article class="life-card"><span>Tempérament chinois</span><p id="chineseTemperament"></p></article>
+          <article class="life-card"><span>Forces</span><p id="chineseStrengths"></p></article>
+          <article class="life-card"><span>Défis</span><p id="chineseChallenges"></p></article>
+          <article class="life-card"><span>Amour & relations</span><p id="chineseLove"></p></article>
+          <article class="life-card"><span>Travail & projets</span><p id="chineseWork"></p></article>
+          <article class="life-card"><span>Influence de l’élément</span><p id="chineseElementText"></p></article>
+        </div>
+      </article>
 
       <article class="panel result-card fusion"><div class="section-head compact"><div><p class="step">04 · Signature TADAMB</p><h2>Le portrait croisé</h2></div><span class="symbol">✦</span></div><p class="fusion-intro">TADAMB utilise uniquement les couches calculables avec les informations fournies.</p><p id="fusionText" class="portrait-text large"></p></article>
 
@@ -51,5 +63,6 @@
   <footer>Prototype TADAMB · Lecture symbolique et culturelle, non scientifique.</footer>
   <script type="module" src="app.js"></script>
   <script src="extras.js" defer></script>
+  <script src="chinese-fix.js" defer></script>
 </body>
 </html>
